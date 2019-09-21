@@ -35,7 +35,7 @@ export class UpdatePage implements OnInit {
     console.log(obj);
     this.authService.updateBrand(this.params, obj).subscribe(
       data => {
-        console.log(data);
+        console.log("data update", data);
         this.alertService.presentToast("update ok");
         this.dismissLogin();
 
