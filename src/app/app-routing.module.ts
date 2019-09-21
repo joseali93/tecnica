@@ -15,6 +15,9 @@ const routes: Routes = [
   { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule', canActivate: [AuthGuard] },
   { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate: [AuthGuard] },
   { path: 'list', loadChildren: './list/list.module#ListPageModule', canActivate: [AuthGuard] },
+  { path: 'details', loadChildren: './pages/details/details.module#DetailsPageModule', canActivate: [AuthGuard] },
+  { path: 'create', loadChildren: './pages/create/create.module#CreatePageModule' },
+  { path: 'update', loadChildren: './pages/update/update.module#UpdatePageModule' },
 ];
 
 @NgModule({

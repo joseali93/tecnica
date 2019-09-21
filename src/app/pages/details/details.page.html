@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button shape="round" (click)="createitem()">Crear</ion-button>
+
+  <ion-card *ngFor="let category of categories; let i=index">
+    <img [src]="category.picture" />
+    <ion-card-header>
+      <ion-card-subtitle>{{category.label}}</ion-card-subtitle>
+      <ion-card-title>
+        <ion-button shape="round" (click)="uptadeItem(category)">Actualizar</ion-button>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{category.label}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

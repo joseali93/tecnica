@@ -27,7 +27,7 @@ export class LandingPage implements OnInit {
     });
   }
 
-  async register() {
+  async remeber() {
     const registerModal = await this.modalController.create({
       component: RegisterPage
     });

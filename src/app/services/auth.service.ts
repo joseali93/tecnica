@@ -4,12 +4,13 @@ import { tap } from 'rxjs/operators';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { EnvService } from './env.service';
 import { User } from '../models/user';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedIn = false;
+  isLoggedIn = true;
   token: any;
   constructor(
     private http: HttpClient,
@@ -26,16 +27,16 @@ export class AuthService {
     ).pipe(
       tap((token: any) => {
         console.log("token--->", token);
-        localStorage.setItem('access_token', token.access_token);
+        localStorage.setItem('access_token', token.response.access_token);
         const infoUser = {
-          name: token.name,
-          profile: token.profile,
-          email: token.email,
-          id: token.id
+          name: token.response.name,
+          profile: token.response.profile,
+          email: token.response.email,
+          id: token.response.id
         };
         localStorage.setItem('user', JSON.stringify(infoUser));
-        localStorage.setItem('brands', JSON.stringify(token.brands));
-        localStorage.setItem('brand', JSON.stringify(token.brand));
+        localStorage.setItem('brands', JSON.stringify(token.response.brands));
+        localStorage.setItem('brand', JSON.stringify(token.response.brand));
 
 
         this.storage.setItem('token', token)
@@ -122,5 +123,27 @@ export class AuthService {
       }
     );
   }
+  getbrands(id: String): Observable<any> {
+    let headerJson = {
+      'AppKey': 'asfgfkmgfhfd141RTGRNOINEFDSFSASumffe15491LSFQUYTREWPLJHBVafgjjlouyytrRRetyhbnmmvcxxz',
+      'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+    };
+    let headers = new HttpHeaders(headerJson);
+    return this.http.get(this.env.API_URL + 'brands/' + id + '/categories',
+      { headers }
+    );
+  }
+  createBrand(id: String, body: any): Observable<any> {
+    let headerJson = {
+      'AppKey': 'asfgfkmgfhfd141RTGRNOINEFDSFSASumffe15491LSFQUYTREWPLJHBVafgjjlouyytrRRetyhbnmmvcxxz',
+      'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+    };
+
+    let headers = new HttpHeaders(headerJson);
+    return this.http.post(this.env.API_URL + 'brands/' + id + '/categories', { body },
+      { headers }
+    );
+  }
+
 
 }
