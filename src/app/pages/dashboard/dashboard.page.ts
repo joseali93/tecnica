@@ -20,10 +20,12 @@ export class DashboardPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.authService.user().subscribe(
-      user => {
-        this.user = user;
-      }
-    );
+    console.log("entro al dash");
+
+    // this.authService.user().subscribe(
+    //   user => {
+    //     this.user = user;
+    //   }
+    // );
   }
 }
