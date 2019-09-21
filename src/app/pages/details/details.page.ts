@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { ModalController } from '@ionic/angular';
 import { CreatePage } from '../create/create.page';
+import { UpdatePage } from '../update/update.page';
 
 @Component({
   selector: 'app-details',
@@ -57,8 +58,15 @@ export class DetailsPage implements OnInit {
     });
     return await registerModal.present();
   }
-  uptadeItem(item) {
-    console.log("item", item);
+  async uptadeItem(item) {
+    console.log("item", item.id);
+    const registerModal = await this.modalController.create({
+      component: UpdatePage,
+      componentProps: {
+        item: String(item.id),
+      }
+    });
+    return await registerModal.present();
 
   }
 }

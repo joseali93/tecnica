@@ -144,6 +144,16 @@ export class AuthService {
       { headers }
     );
   }
+  updateBrand(id: String, body: any): Observable<any> {
+    let headerJson = {
+      'AppKey': 'asfgfkmgfhfd141RTGRNOINEFDSFSASumffe15491LSFQUYTREWPLJHBVafgjjlouyytrRRetyhbnmmvcxxz',
+      'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+    };
 
+    let headers = new HttpHeaders(headerJson);
+    return this.http.post(this.env.API_URL + 'categories/' + id, { body },
+      { headers }
+    );
+  }
 
 }

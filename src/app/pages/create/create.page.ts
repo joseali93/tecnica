@@ -25,18 +25,15 @@ export class CreatePage implements OnInit {
     console.log(this.params);
 
   }
-  login(form: NgForm) {
+  create(form: NgForm) {
     const obj = {
       label: form.value.name,
       picture: "http://54.175.223.32/cotizador/backend/storage/app/categories/cYAwQszq6wcOlZfUPkP7mLQSXEZpbcjxOPW8wb46.png",
     }
     console.log(obj);
-
-
     this.authService.createBrand(this.params, obj).subscribe(
       data => {
         console.log(data);
-
         this.alertService.presentToast("create ok");
         this.dismissLogin();
 

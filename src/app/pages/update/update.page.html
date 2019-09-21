@@ -5,5 +5,14 @@
 </ion-header>
 
 <ion-content>
+  <form #form="ngForm" (ngSubmit)="update(form)" method="post">
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input ngModel type="email" name="name"></ion-input>
+    </ion-item>
 
+
+
+    <ion-button type="submit" expand="full" color="primary">Crear</ion-button>
+  </form>
 </ion-content>

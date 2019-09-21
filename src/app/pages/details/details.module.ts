@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { DetailsPage } from './details.page';
 import { CreatePage } from '../create/create.page';
+import { UpdatePage } from '../update/update.page';
 
 const routes: Routes = [
   {
@@ -22,7 +23,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [DetailsPage, CreatePage],
-  entryComponents: [DetailsPage, CreatePage]
+  declarations: [DetailsPage, CreatePage, UpdatePage],
+  entryComponents: [DetailsPage, CreatePage, UpdatePage]
 })
 export class DetailsPageModule { }
